@@ -18,7 +18,7 @@ namespace MQBenchmarking {
             connection = factory.CreateConnection("admin", "admin");
             session = connection.CreateSession();
 
-            destination = SessionUtil.GetDestination(session, "queue://FOO.BAR");
+            destination = SessionUtil.GetDestination(session, "queue://TEST");
             consumer = session.CreateConsumer(destination);
             producer = session.CreateProducer(destination);
 
