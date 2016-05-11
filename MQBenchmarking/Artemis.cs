@@ -9,7 +9,7 @@ namespace MQBenchmarking {
         int numMessages = 0, messageSize = 0;
 
         public void Setup(int numMessages, int messageSize) {
-            throw new NotImplementedException();
+            
         }
 
         public void Teardown() {
@@ -17,11 +17,11 @@ namespace MQBenchmarking {
         }
 
         public void Receive() {
-            throw new NotImplementedException();
+            
         }
 
         public void Send(byte[] message) {
-            throw new NotImplementedException();
+            
         }
 
     }
