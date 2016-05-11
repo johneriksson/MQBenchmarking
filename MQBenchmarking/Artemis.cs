@@ -15,7 +15,7 @@ namespace MQBenchmarking {
 
         public void Setup() {
             factory = new NMSConnectionFactory(connectUri);
-            connection = factory.CreateConnection();
+            connection = factory.CreateConnection("admin", "admin");
             session = connection.CreateSession();
 
             destination = SessionUtil.GetDestination(session, "queue://FOO.BAR");
