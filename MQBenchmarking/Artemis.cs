@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MQBenchmarking {
+﻿namespace MQBenchmarking {
     class Artemis : MessageQueue {
         int numMessages = 0, messageSize = 0;
 
