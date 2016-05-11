@@ -19,7 +19,7 @@ namespace MQBenchmarking {
             }
 
             Console.WriteLine("Setting up message queue...");
-            mq.Setup(numMessages, messageSize);
+            mq.Setup();
 
             Console.WriteLine("Running tests...");
             if (option == "send") {
