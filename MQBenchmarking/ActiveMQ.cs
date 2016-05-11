@@ -4,7 +4,6 @@ using Apache.NMS.Util;
 
 namespace MQBenchmarking {
     class ActiveMQ : MessageQueue {
-        int numMessages = 0, messageSize = 0;
         Uri connectUri = new Uri("activemq:tcp://localhost:61616");
         IConnectionFactory factory = null;
         IConnection connection = null;
@@ -14,10 +13,7 @@ namespace MQBenchmarking {
         IMessageProducer producer = null;
         IBytesMessage request = null;
 
-        public void Setup(int numMessages, int messageSize) {
-            this.numMessages = numMessages;
-            this.messageSize = messageSize;
-
+        public void Setup() {
             factory = new NMSConnectionFactory(connectUri);
             connection = factory.CreateConnection();
             session = connection.CreateSession();

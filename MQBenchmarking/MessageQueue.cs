@@ -1,6 +1,6 @@
 ﻿namespace MQBenchmarking {
     interface MessageQueue {
-        void Setup(int numMessages, int messageSize);
+        void Setup();
         void Teardown();
         void Send(byte[] message);
         void Receive();

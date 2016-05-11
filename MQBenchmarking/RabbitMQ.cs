@@ -2,16 +2,12 @@
 
 namespace MQBenchmarking {
     class RabbitMQ : MessageQueue {
-        int numMessages = 0, messageSize = 0;
         IConnection connection = null;
         IModel channel = null;
         string queueName = "myQueueName";
         IBasicProperties basicProperties = null;
 
-        public void Setup(int numMessages, int messageSize){
-            this.numMessages = numMessages;
-            this.messageSize = messageSize;
-
+        public void Setup(){
             var factory = new ConnectionFactory() { HostName = "localhost" };
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
