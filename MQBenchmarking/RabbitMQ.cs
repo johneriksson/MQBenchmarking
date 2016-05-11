@@ -29,9 +29,13 @@ namespace MQBenchmarking {
         }
 
         public void Teardown() {
-            channel.QueueDelete(queueName);
-            channel.Close();
-            connection.Close();
+            if (channel != null) {
+                channel.QueueDelete(queueName);
+                channel.Close();
+            }
+
+            if (connection != null)
+                connection.Close();
         }
 
         public void Receive() {

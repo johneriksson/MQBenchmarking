@@ -39,8 +39,10 @@ namespace MQBenchmarking {
         }
 
         public void Teardown() {
-            session.Close();
-            connection.Close();
+            if (session != null)
+                session.Close();
+            if (connection != null)
+                connection.Close();
         }
 
         public void Receive() {
