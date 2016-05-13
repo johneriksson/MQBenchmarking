@@ -26,7 +26,6 @@ namespace MQBenchmarking {
             producer.DeliveryMode = MsgDeliveryMode.Persistent;
             request = session.CreateBytesMessage();
             request.NMSDeliveryMode = MsgDeliveryMode.Persistent;
-            request.NMSCorrelationID = "abc";
         }
 
         public void Teardown() {
@@ -41,6 +40,7 @@ namespace MQBenchmarking {
         }
 
         public void Send(byte[] message) {
+            request.Content = message;
             producer.Send(request);
         }
 

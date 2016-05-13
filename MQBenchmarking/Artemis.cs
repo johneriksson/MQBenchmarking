@@ -18,7 +18,7 @@ namespace MQBenchmarking {
             connection = factory.CreateConnection("admin", "admin");
             session = connection.CreateSession();
 
-            destination = SessionUtil.GetDestination(session, "queue://TEST");
+            destination = SessionUtil.GetDestination(session, "TEST");
             consumer = session.CreateConsumer(destination);
             producer = session.CreateProducer(destination);
 
@@ -26,7 +26,6 @@ namespace MQBenchmarking {
             producer.DeliveryMode = MsgDeliveryMode.Persistent;
             request = session.CreateBytesMessage();
             request.NMSDeliveryMode = MsgDeliveryMode.Persistent;
-            request.NMSCorrelationID = "abc";
         }
 
         public void Teardown() {
@@ -37,10 +36,11 @@ namespace MQBenchmarking {
         }
 
         public void Receive() {
-            IBytesMessage message = consumer.Receive() as IBytesMessage;
+            IBytesMessage message = consumer.ReceiveNoWait() as IBytesMessage;
         }
 
         public void Send(byte[] message) {
+            request.Content = message;
             producer.Send(request);
         }
 
