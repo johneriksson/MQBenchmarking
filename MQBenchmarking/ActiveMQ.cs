@@ -25,6 +25,7 @@ namespace MQBenchmarking {
             connection.Start();
             producer.DeliveryMode = MsgDeliveryMode.Persistent;
             request = session.CreateBytesMessage();
+            request.NMSPriority = MsgPriority.Highest;
             request.NMSDeliveryMode = MsgDeliveryMode.Persistent;
         }
 
@@ -36,7 +37,9 @@ namespace MQBenchmarking {
         }
 
         public void Receive() {
-            IBytesMessage message = consumer.Receive() as IBytesMessage;
+            IBytesMessage message = consumer.ReceiveNoWait() as IBytesMessage;
+
+            message.Acknowledge();
         }
 
         public void Send(byte[] message) {

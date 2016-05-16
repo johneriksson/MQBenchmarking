@@ -25,6 +25,7 @@ namespace MQBenchmarking {
             connection.Start();
             producer.DeliveryMode = MsgDeliveryMode.Persistent;
             request = session.CreateBytesMessage();
+            request.NMSPriority = MsgPriority.Highest;
             request.NMSDeliveryMode = MsgDeliveryMode.Persistent;
         }
 
