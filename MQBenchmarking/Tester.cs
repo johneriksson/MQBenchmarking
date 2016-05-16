@@ -23,8 +23,9 @@ namespace MQBenchmarking {
 
             Console.WriteLine("Running tests...");
             if (option == "send") {
+                byte[] message = new byte[messageSize];
                 for (int i = 0; i < numMessages; i++) {
-                    mq.Send(new byte[messageSize]);
+                    mq.Send(message);
                 }
             } else if (option == "receive") {
                 for (int i = 0; i < numMessages; i++) {
@@ -32,7 +33,9 @@ namespace MQBenchmarking {
                 }
             }
 
-            Console.WriteLine("Finished!");
+            Console.WriteLine("Finished tests! Running teardown()");
+            System.Threading.Thread.Sleep(2000);
+            mq.Teardown();
         }
     }
 }
