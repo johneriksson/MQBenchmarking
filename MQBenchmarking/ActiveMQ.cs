@@ -16,7 +16,7 @@ namespace MQBenchmarking {
         public void Setup() {
             factory = new NMSConnectionFactory(connectUri);
             connection = factory.CreateConnection();
-            session = connection.CreateSession();
+            session = connection.CreateSession(AcknowledgementMode.AutoAcknowledge);
 
             destination = SessionUtil.GetDestination(session, "queue://FOO.BAR");
             consumer = session.CreateConsumer(destination);
@@ -37,9 +37,7 @@ namespace MQBenchmarking {
         }
 
         public void Receive() {
-            IBytesMessage message = consumer.ReceiveNoWait() as IBytesMessage;
-
-            message.Acknowledge();
+            IBytesMessage message = consumer.Receive() as IBytesMessage;
         }
 
         public void Send(byte[] message) {

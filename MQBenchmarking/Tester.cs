@@ -59,7 +59,7 @@ namespace MQBenchmarking {
             Console.Write("Done.\n");
 
             Console.Write("Finished! " + action + " " + numMessages + " messages in " + elapsedMs + " ms. (" + msgPerS + " msg/s). \nRunning teardown()... ");
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(1000);
             mq.Teardown();
             Console.Write("Done.\n");
         }
